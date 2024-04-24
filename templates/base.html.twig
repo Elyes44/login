@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 30px;
+            width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #4285f4;
+            outline: none;
+        }
+
+        .btn {
+            background-color: #4285f4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #357ae8;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-muted {
+            color: #888;
+        }
+    </style>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    {% block body %}
+    <div class="card">
+        <h2 class="text-center mb-4">Create your account</h2>
+        <form method="post">
+            {{ form_errors(registrationForm) }}
+
+            <div class="form-group">
+                <input type="text" name="firstname" id="inputFirstname" class="form-control" placeholder="First Name" required autofocus>
+            </div>
+            <div class="form-group">
+                <input type="text" name="lastname" id="inputLastname" class="form-control" placeholder="Last Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-block">Create Account</button>
+        </form>
+        <div class="text-center mt-3">
+            <small class="text-muted">Already have an account? <a href="{{ path('app_login') }}">Sign in</a></small>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block javascripts %}{% endblock %}
+</body>
+</html>
